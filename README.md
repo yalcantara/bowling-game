@@ -1,6 +1,12 @@
 # bowling
 A Java code challenge project.
 
+To run the test cases, navigate to the root folder and type the following command:
+
+```
+mvn test
+```
+
 To build, navigate to the root folder and type the following command:
 
 ```
