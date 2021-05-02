@@ -3,9 +3,9 @@ package com.jobsity.bowling;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import com.jobsity.bowling.core.BowlingParser;
-import com.jobsity.bowling.core.BowlingProgram;
-import com.jobsity.bowling.core.FileParser;
+import com.jobsity.bowling.game.IGameParser;
+import com.jobsity.bowling.game.BowlingProgram;
+import com.jobsity.bowling.game.impl.FileParserImpl;
 import org.junit.Test;
 
 
@@ -16,7 +16,7 @@ public class IntegrationTest
     
         BowlingProgram p = new BowlingProgram();
     
-        BowlingParser parser = new FileParser("files/test-sample.txt");
+        IGameParser parser = new FileParserImpl("files/test-sample.txt");
    
         p.setParser(parser);
     
@@ -51,7 +51,7 @@ public class IntegrationTest
     
         BowlingProgram program = new BowlingProgram();
         
-        BowlingParser parser = new FileParser("files/test-strike.txt");
+        IGameParser parser = new FileParserImpl("files/test-strike.txt");
         program.setParser(parser);
         
         program.start();
@@ -65,7 +65,7 @@ public class IntegrationTest
         
         BowlingProgram program = new BowlingProgram();
         
-        BowlingParser parser = new FileParser("files/test-10.txt");
+        IGameParser parser = new FileParserImpl("files/test-10.txt");
         program.setParser(parser);
         
         program.start();
@@ -79,7 +79,7 @@ public class IntegrationTest
         
         BowlingProgram program = new BowlingProgram();
         
-        BowlingParser parser = new FileParser("files/test-fouls.txt");
+        IGameParser parser = new FileParserImpl("files/test-fouls.txt");
         program.setParser(parser);
         
         program.start();

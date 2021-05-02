@@ -1,5 +1,7 @@
-package com.jobsity.bowling.core;
+package com.jobsity.bowling.game.impl;
 
+import com.jobsity.bowling.game.BowlingException;
+import com.jobsity.bowling.game.IBowlingGame;
 import com.jobsity.bowling.model.Sheet;
 import com.jobsity.bowling.utils.Constants;
 
@@ -10,11 +12,11 @@ import java.util.Map;
 import static com.jobsity.bowling.utils.AppUtils.*;
 import static com.jobsity.bowling.utils.Constants.*;
 
-public class BowlingGame {
+public class BowlingGameImpl implements IBowlingGame {
 	
 	private final Map<String, Sheet> sheets;
 	
-	public BowlingGame(){
+	public BowlingGameImpl(){
 		sheets = new LinkedHashMap<>();
 	}
 	

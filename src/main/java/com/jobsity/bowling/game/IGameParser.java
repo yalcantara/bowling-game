@@ -1,4 +1,4 @@
-package com.jobsity.bowling.core;
+package com.jobsity.bowling.game;
 
 import com.jobsity.bowling.model.PlayerEntry;
 
@@ -7,10 +7,10 @@ import com.jobsity.bowling.model.PlayerEntry;
  * design allows extending for multiple parsing sources, such as: stream, web, output of another
  * program, etc..
  */
-public interface BowlingParser extends AutoCloseable {
+public interface IGameParser extends AutoCloseable {
 	
 	/**
-	 * This method is called when the bowling programs starts and before calling the {@link BowlingParser#next()}
+	 * This method is called when the bowling programs starts and before calling the {@link IGameParser#next()}
 	 * method.
 	 */
 	public void init();

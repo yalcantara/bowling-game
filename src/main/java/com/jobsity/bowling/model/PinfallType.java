@@ -1,6 +1,6 @@
 package com.jobsity.bowling.model;
 
-import com.jobsity.bowling.core.InvalidScoreException;
+import com.jobsity.bowling.game.InvalidScoreException;
 
 import static com.jobsity.bowling.utils.Constants.*;
 import static com.jobsity.bowling.utils.AppUtils.*;

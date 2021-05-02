@@ -1,5 +1,8 @@
-package com.jobsity.bowling.core;
+package com.jobsity.bowling.game.impl;
 
+import com.jobsity.bowling.game.IGameParser;
+import com.jobsity.bowling.game.InvalidScoreException;
+import com.jobsity.bowling.game.ParseException;
 import com.jobsity.bowling.model.PinfallType;
 import com.jobsity.bowling.model.PlayerEntry;
 
@@ -12,14 +15,14 @@ import java.nio.file.Paths;
 
 import static com.jobsity.bowling.utils.AppUtils.*;
 
-public class FileParser implements BowlingParser {
+public class FileParserImpl implements IGameParser {
 	
 	private final Path path;
 	
 	private int num = 1;
 	private BufferedReader br;
 	
-	public FileParser(String path){
+	public FileParserImpl(String path){
 		this.path = Paths.get(path);
 	}
 	

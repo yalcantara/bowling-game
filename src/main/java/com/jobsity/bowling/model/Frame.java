@@ -1,7 +1,7 @@
 package com.jobsity.bowling.model;
 
-import com.jobsity.bowling.core.InvalidScoreException;
-import com.jobsity.bowling.core.InvalidStateException;
+import com.jobsity.bowling.game.InvalidScoreException;
+import com.jobsity.bowling.game.InvalidStateException;
 
 import java.io.PrintWriter;
 import java.io.Serializable;

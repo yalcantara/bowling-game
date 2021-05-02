@@ -1,4 +1,4 @@
-package com.jobsity.bowling.core;
+package com.jobsity.bowling.game;
 
 public class InvalidScoreException extends BowlingException {
 

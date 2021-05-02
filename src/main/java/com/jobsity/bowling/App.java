@@ -1,15 +1,10 @@
 package com.jobsity.bowling;
 
-import com.jobsity.bowling.core.BowlingGame;
-import com.jobsity.bowling.core.BowlingParser;
-import com.jobsity.bowling.core.BowlingProgram;
-import com.jobsity.bowling.core.FileParser;
-import com.jobsity.bowling.model.Sheet;
+import com.jobsity.bowling.game.IGameParser;
+import com.jobsity.bowling.game.BowlingProgram;
+import com.jobsity.bowling.game.impl.FileParserImpl;
 import com.jobsity.bowling.utils.AppUtils;
 
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.logging.Logger;
 
 /**
@@ -38,7 +33,7 @@ public class App
             log.severe("The file path can not be empty whitespace.");
             System.exit(0);
         }
-        BowlingParser p = new FileParser(path);
+        IGameParser p = new FileParserImpl(path);
     
         BowlingProgram program = new BowlingProgram();
         program.setParser(p);

@@ -1,8 +1,8 @@
-package com.jobsity.bowling.core;
+package com.jobsity.bowling.game;
 
 
+import com.jobsity.bowling.game.impl.BowlingGameImpl;
 import com.jobsity.bowling.model.PlayerEntry;
-import com.jobsity.bowling.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +11,15 @@ import  static com.jobsity.bowling.utils.AppUtils.*;
 
 public class BowlingProgram {
 	
-	private BowlingParser parser;
-	private final BowlingGame game;
+	private IGameParser parser;
+	private final IBowlingGame game;
 	
 	public BowlingProgram(){
 		super();
-		game = new BowlingGame();
+		game = new BowlingGameImpl();
 	}
 	
-	public void setParser(BowlingParser parser){
+	public void setParser(IGameParser parser){
 		checkParamNotNull("parser", parser);
 		this.parser = parser;
 	}
@@ -29,7 +29,7 @@ public class BowlingProgram {
 			throw new BowlingException("Could not start program without a parser.");
 		}
 		
-		try(BowlingParser p = parser){
+		try(IGameParser p = parser){
 			p.init();
 			
 			List<PlayerEntry> entries = new ArrayList<>();

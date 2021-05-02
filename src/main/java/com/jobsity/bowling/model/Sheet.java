@@ -1,10 +1,13 @@
 package com.jobsity.bowling.model;
 
-import com.jobsity.bowling.core.BowlingException;
+import com.jobsity.bowling.game.BowlingException;
 
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static com.jobsity.bowling.utils.Constants.*;
 import static com.jobsity.bowling.utils.AppUtils.*;
@@ -14,16 +17,16 @@ public class Sheet implements Serializable {
 	
 
 	private String player;
-	//since it always going to be 10, no need to use List.
-	private final Frame[] frames;
+	
+	private final List<Frame> frames;
 	private final Integer[] score;
 	
 	private int crt = 0;
 
 	public Sheet(){
-		frames = new Frame[TOTAL_FRAMES];
-		for(int i =0; i < frames.length; i++){
-			frames[i] = new Frame(i + 1);
+		frames = new ArrayList<>(TOTAL_FRAMES);
+		for(int i =0; i < TOTAL_FRAMES; i++){
+			frames.add(new Frame(i + 1));
 		}
 		
 		score = new Integer[TOTAL_FRAMES];
@@ -38,10 +41,10 @@ public class Sheet implements Serializable {
 	}
 	
 	public void append(String val){
-		if(crt == frames.length){
+		if(crt == frames.size()){
 			throw new BowlingException("Maximun number of frames/shots reached.");
 		}
-		Frame f = frames[crt];
+		Frame f = frames.get(crt);
 		f.append(val);
 		if(f.isReady()){
 			crt++;
@@ -49,8 +52,8 @@ public class Sheet implements Serializable {
 	}
 	
 	public boolean isReady(int frameNum){
-		checkParamBetween("frameNum", 1, frames.length, frameNum);
-		return frames[frameNum - 1].isReady();
+		checkParamBetween("frameNum", 1, frames.size(), frameNum);
+		return frames.get(frameNum - 1).isReady();
 	}
 	
 	public int computeScore(int num){
@@ -67,7 +70,7 @@ public class Sheet implements Serializable {
 	
 	public int computeFrameScore(int num){
 		int idx = num - 1;
-		Frame f = frames[idx];
+		Frame f = frames.get(idx);
 		f.checkIsReady();
 		
 		if(f.isLast()){
@@ -107,10 +110,10 @@ public class Sheet implements Serializable {
 	}
 	
 	private int nextShotPinfall(int frameIdx, int shot) {
-		checkParamBetween("frameIdx", 0, frames.length - 1, frameIdx);
+		checkParamBetween("frameIdx", 0, frames.size() - 1, frameIdx);
 		checkParamBetween("shot", 1, 2, shot);
 		
-		Frame f = frames[frameIdx];
+		Frame f = frames.get(frameIdx);
 		
 		f.checkIsReady();
 		
@@ -127,15 +130,15 @@ public class Sheet implements Serializable {
 			throw new AssertionError("Unreachable code.");
 		}
 		
-		Frame next = frames[frameIdx + 1];
+		Frame next = frames.get(frameIdx + 1);
 		return next.checkAndGetFirst();
 	}
 	
 	private int sumOfNext2(int frameIdx, int shot){
-		checkParamBetween("frameIdx", 0, frames.length-1, frameIdx);
+		checkParamBetween("frameIdx", 0, frames.size()-1, frameIdx);
 		checkParamBetween("shot", 1, 2, shot);
 		
-		Frame f = frames[frameIdx];
+		Frame f = frames.get(frameIdx);
 		
 		f.checkIsReady();
 		
@@ -153,7 +156,7 @@ public class Sheet implements Serializable {
 			throw new AssertionError("Unreachable code.");
 		}
 		
-		Frame next = frames[frameIdx + 1];
+		Frame next = frames.get(frameIdx + 1);
 		int nfirst = next.checkAndGetFirst();
 		
 		if(nfirst == STRIKE_VALUE){
@@ -162,7 +165,7 @@ public class Sheet implements Serializable {
 				return sum;
 			}
 			
-			Frame third = frames[frameIdx + 2];
+			Frame third = frames.get(frameIdx + 2);
 			
 			int sum = nfirst + third.checkAndGetFirst();
 			return sum;
@@ -183,20 +186,22 @@ public class Sheet implements Serializable {
 		String name = (player ==null)?"":player;
 		pw.println(name);
 		pw.print("Pinfalls\t");
-		for(int i =0; i < frames.length; i++){
-			Frame frame = frames[i];
+		for(int i =0; i < frames.size(); i++){
+			Frame frame = frames.get(i);
 			frame.print(pw);
-			if(i + 1 < frames.length) {
+			if(i + 1 < frames.size()) {
 				pw.print("\t");
 			}
 		}
+		
+		
 		pw.println();
 		pw.print("Score\t\t");
-		for(int i =0; i < frames.length; i++){
+		for(int i =0; i < frames.size(); i++){
 			int num = i + 1;
 			int score = computeScore(num);
 			pw.print(score);
-			if(i + 1 < frames.length) {
+			if(i + 1 < frames.size()) {
 				pw.print("\t\t");
 			}
 		}
@@ -206,7 +211,7 @@ public class Sheet implements Serializable {
 	public String toString() {
 		return "Sheet{" +
 				"player='" + player + '\'' +
-				", frames=" + Arrays.toString(frames) +
+				", frames=" + frames.toString() +
 				", score=" + Arrays.toString(score) +
 				", crt=" + crt +
 				'}';
