@@ -15,6 +15,10 @@ To run the test cases, navigate to the root folder and type the following comman
 mvn test
 ```
 
+You should see an output like this:
+
+![Test output](./screen/test.jpg?raw=true)
+
 To build, navigate to the root folder and type the following command:
 
 ```
