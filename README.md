@@ -1,4 +1,4 @@
-# bowling
+# Bowling
 A Java code challenge project.
 
 #### Requirements
