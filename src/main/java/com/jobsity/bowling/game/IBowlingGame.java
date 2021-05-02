@@ -1,7 +1,7 @@
 package com.jobsity.bowling.game;
 
 /**
- * Defines the very basics of a streaming Bowling Game by accepting players shot's
+ * Defines the very basics of a streaming Bowling Game by accepting player's shot
  * value on the go. Since there are many types of Bowling Games, this interface is
  * simple enough to allow different implementations to set their own rules & strategies.
  */
@@ -24,7 +24,7 @@ public interface IBowlingGame {
 	
 	/**
 	 * Prints to the output console the current state of the game, including the
-	 * names of the players, frames and score.
+	 * names of the players, frames, and score.
 	 */
 	public void print();
 }
