@@ -32,4 +32,6 @@ Maven will build the project and run some test files. To run type:
 java -jar target/bowling-jar-with-dependencies.jar files/game.txt
 ```
 
-You can substitute the game.txt file for whatever text file containing the game data. Make sure the proper file path is passed as argument to the program.
+You can substitute the game.txt file for whatever text file containing the game data. Make sure the proper file path is passed as argument to the program. You should see something like this:
+
+![Game output](./screen/game.jpg?raw=true)
