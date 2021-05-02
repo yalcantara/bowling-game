@@ -1,6 +1,12 @@
 # bowling
 A Java code challenge project.
 
+## Requirements
+To execute this project correctly, the following software components are needed:
+
+* Java version 11 or higher
+* Apache Maven version 3.6.0 or higher 
+
 To run the test cases, navigate to the root folder and type the following command:
 
 ```
