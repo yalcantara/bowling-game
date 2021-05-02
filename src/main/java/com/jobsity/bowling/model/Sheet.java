@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static com.jobsity.bowling.utils.Constants.*;
 import static com.jobsity.bowling.utils.AppUtils.*;
@@ -186,25 +187,27 @@ public class Sheet implements Serializable {
 		String name = (player ==null)?"":player;
 		pw.println(name);
 		pw.print("Pinfalls\t");
-		for(int i =0; i < frames.size(); i++){
+		
+		IntStream.range(0, frames.size()).forEach((i)->{
 			Frame frame = frames.get(i);
 			frame.print(pw);
 			if(i + 1 < frames.size()) {
 				pw.print("\t");
 			}
-		}
+		});
 		
 		
 		pw.println();
 		pw.print("Score\t\t");
-		for(int i =0; i < frames.size(); i++){
+		IntStream.range(0, frames.size()).forEach((i)->{
 			int num = i + 1;
 			int score = computeScore(num);
 			pw.print(score);
 			if(i + 1 < frames.size()) {
 				pw.print("\t\t");
 			}
-		}
+		});
+		
 	}
 	
 	@Override

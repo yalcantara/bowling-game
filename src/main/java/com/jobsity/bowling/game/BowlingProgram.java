@@ -38,12 +38,12 @@ public class BowlingProgram {
 				entries.add(entry);
 			}
 			
-			for(PlayerEntry e:entries){
+			entries.forEach(e->{
 				String player = e.getPlayer();
 				String pinfall = e.getPinfall();
 				
 				game.append(player, pinfall);
-			}
+			});
 		}catch (Exception ex){
 			//shouldn't happen, but in this case, we are not going to ignore it.
 			throw new RuntimeException(ex);

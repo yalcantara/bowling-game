@@ -8,6 +8,7 @@ import com.jobsity.bowling.utils.Constants;
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 import static com.jobsity.bowling.utils.AppUtils.*;
 import static com.jobsity.bowling.utils.Constants.*;
@@ -42,20 +43,23 @@ public class BowlingGameImpl implements IBowlingGame {
 		pw.println();
 		pw.print("Frame\t\t");
 		
-		for(int i =1; i <= TOTAL_FRAMES; i++){
+		IntStream.range(1, TOTAL_FRAMES + 1).forEach(i -> {
+			
 			pw.print(i);
 			
-			if(i  + 1 <= TOTAL_FRAMES){
+			if (i + 1 <= TOTAL_FRAMES) {
 				pw.print("\t\t");
 			}
-		}
+			
+		});
 		pw.println();
 		pw.println();
-		for(Sheet sheet:sheets.values()){
-			sheet.print(pw);
+		
+		sheets.values().forEach((Sheet s)->{
+			s.print(pw);
 			pw.println();
 			pw.println();
-		}
+		});
 	}
 	
 	
