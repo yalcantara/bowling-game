@@ -1,0 +1,17 @@
+*/target/
+/target/
+*/node_modules/
+*.classpath
+*.project
+*/.settings/
+*/.vscode/
+*/.idea/
+*.idea/
+*/cmake-build-debug/
+*.class
+*.iml
+*.jar
+*.DS_Store
+*/build/
+*/Debug/*
+
